@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Container, Description, Avatar, DescriptionName, DescriptionText, StatsList, StatsItem, StatsName, StatsValue  } from './Profile.styled';
 
-export const Profile = ({username, location, tag, avatar, stats}) => {
+export const Profile = ({username, location, tag, avatar, stats: {followers, views, likes}}) => {
     return (
         <Container>
     <Description>
@@ -17,21 +17,21 @@ export const Profile = ({username, location, tag, avatar, stats}) => {
     <StatsList>
       <StatsItem>
         <StatsName>Followers</StatsName>
-        <StatsValue>{stats.followers}</StatsValue>
+        <StatsValue>{followers}</StatsValue>
       </StatsItem>
       <StatsItem>
         <StatsName>Views</StatsName>
-        <StatsValue>{stats.views}</StatsValue>
+        <StatsValue>{views}</StatsValue>
       </StatsItem>
       <StatsItem>
         <StatsName>Likes</StatsName>
-        <StatsValue>{stats.likes}</StatsValue>
+        <StatsValue>{likes}</StatsValue>
       </StatsItem>
     </StatsList>
   </Container>)
-}
+};
 
-Event.propTypes = {
+Profile.propTypes = {
     username: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,
     tag: PropTypes.string.isRequired,
@@ -41,4 +41,4 @@ Event.propTypes = {
         views: PropTypes.number.isRequired,
         followers: PropTypes.number.isRequired,
     })
-}
+};

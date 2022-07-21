@@ -4,18 +4,19 @@ import { Container, Title, StatsList, StatsItem, StatsName, StatsValue  } from '
 export const Statistics = ({title, stats}) => {
     return (
         <Container>
-        {title !== undefined && (<Title>{title}</Title>)}
+        {title && (<Title>{title}</Title>)}
         <StatsList>
-            {stats.map(stat => 
-                <StatsItem key={stat.id}>
-                    <StatsName>{stat.label}</StatsName>
-                    <StatsValue>{stat.percentage}%</StatsValue>
-                    </StatsItem>)}
+            {stats.map(stat => { 
+                const {id, label, percentage} = stat;
+                return <StatsItem key={id}>
+                    <StatsName>{label}</StatsName>
+                    <StatsValue>{percentage}%</StatsValue>
+                    </StatsItem>})}
         </StatsList>
         </Container>
 
     )
-}
+};
 
 Statistics.propTypes = {
     title: PropTypes.string,
@@ -24,4 +25,4 @@ Statistics.propTypes = {
         label: PropTypes.string.isRequired,
         percentage: PropTypes.number.isRequired,
     }))
-}
+};
